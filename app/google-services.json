@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "974500621579",
+    "project_id": "godstyle-e4410",
+    "storage_bucket": "godstyle-e4410.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:974500621579:android:db3ff54317789336d6060e",
+        "android_client_info": {
+          "package_name": "com.example.godstyle"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhJE9PJHN8hmEhmrsqnIn2drRacnMQpkg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
