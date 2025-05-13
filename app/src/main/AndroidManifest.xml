@@ -20,6 +20,8 @@
 
         <activity android:name=".MainActivity" android:exported="false" />
         <activity android:name=".AnadirCitaActivity" android:exported="false" />
+        <activity android:name=".ActivityClientes" android:exported="false" />
+
 
     </application>
 

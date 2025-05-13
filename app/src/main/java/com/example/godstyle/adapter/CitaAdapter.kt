@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Button
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -26,9 +27,10 @@ class CitaAdapter(
     }
 
     inner class CitaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val txtCliente = itemView.findViewById<TextView>(R.id.txtCliente)
-        private val txtServicio = itemView.findViewById<TextView>(R.id.txtServicio)
-        private val txtFechaHora = itemView.findViewById<TextView>(R.id.txtFechaHora)
+        private val txtCliente = itemView.findViewById<TextView>(R.id.clienteText)
+        private val txtServicio = itemView.findViewById<TextView>(R.id.servicioText)
+        private val txtFechaHora = itemView.findViewById<TextView>(R.id.fechaText)
+        private val botonEliminar = itemView.findViewById<Button>(R.id.botonEliminar)
 
         fun bind(cita: Cita) {
             txtCliente.text = cita.cliente
@@ -36,10 +38,7 @@ class CitaAdapter(
             txtFechaHora.text = "${cita.fecha} - ${cita.hora}"
 
             itemView.setOnClickListener { onEditClick(cita) }
-            itemView.setOnLongClickListener {
-                onDeleteClick(cita)
-                true
-            }
+            botonEliminar.setOnClickListener { onDeleteClick(cita) }
         }
     }
 

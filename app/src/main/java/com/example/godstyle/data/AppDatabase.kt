@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.godstyle.model.Cita
 
-@Database(entities = [Cita::class], version = 1, exportSchema = false)
+@Database(entities = [Cita::class], version = 2, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun citaDao(): CitaDao
 
@@ -20,7 +20,9 @@ abstract class AppDatabase : RoomDatabase() {
                     context.applicationContext,
                     AppDatabase::class.java,
                     "godstyle_db"
-                ).build()
+                )
+                    .fallbackToDestructiveMigration() // Evita el error fatal
+                    .build()
                 INSTANCE = instance
                 instance
             }

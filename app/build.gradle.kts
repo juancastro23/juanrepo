@@ -9,6 +9,7 @@ android {
     namespace = "com.example.godstyle"
     compileSdk = 34
 
+
     defaultConfig {
         applicationId = "com.example.godstyle"
         minSdk = 26
@@ -36,6 +37,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 }
 

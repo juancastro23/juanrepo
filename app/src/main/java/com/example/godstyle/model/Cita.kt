@@ -10,5 +10,5 @@ data class Cita(
     val servicio: String,
     val fecha: String,
     val hora: String,
-    val notas: String?
+    val notas: String
 )

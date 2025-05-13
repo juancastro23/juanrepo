@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.godstyle.model.Cita
 import com.example.godstyle.viewmodel.CitaViewModel
 import com.example.godstyle.viewmodel.CitaViewModelFactory
+import android.content.Intent
+
 
 class AnadirCitaActivity : AppCompatActivity() {
 
@@ -55,6 +57,9 @@ class AnadirCitaActivity : AppCompatActivity() {
                 Toast.makeText(this, "Cita actualizada", Toast.LENGTH_SHORT).show()
             }
 
+
+            val intent = Intent(this, ActivityClientes::class.java)
+            startActivity(intent)
             finish()
         }
     }
