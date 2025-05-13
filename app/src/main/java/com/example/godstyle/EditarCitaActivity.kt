@@ -6,8 +6,10 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.godstyle.databinding.ActivityEditarCitaBinding
 import com.example.godstyle.model.Cita
+import com.example.godstyle.notification.AlarmScheduler
 import com.example.godstyle.viewmodel.CitaViewModel
 import com.example.godstyle.viewmodel.CitaViewModelFactory
+import com.google.firebase.auth.FirebaseAuth
 
 class EditarCitaActivity : AppCompatActivity() {
 
@@ -15,8 +17,7 @@ class EditarCitaActivity : AppCompatActivity() {
     private val citaViewModel: CitaViewModel by viewModels {
         CitaViewModelFactory((application as GodStyleApplication).repository)
     }
-
-    private var citaId: Int = -1
+    private val auth by lazy { FirebaseAuth.getInstance() }
     private var citaOriginal: Cita? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,50 +25,62 @@ class EditarCitaActivity : AppCompatActivity() {
         binding = ActivityEditarCitaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Recuperamos el ID
-        citaId = intent.getIntExtra("cita_id", -1)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        val citaId = intent.getIntExtra("cita_id", -1)
         if (citaId == -1) {
             Toast.makeText(this, "ID de cita no válido", Toast.LENGTH_SHORT).show()
             finish()
             return
         }
 
-        // Observamos la cita por su ID
-        citaViewModel.obtenerCitaPorId(citaId).observe(this) { cita ->
-            if (cita != null) {
-                citaOriginal = cita
-                binding.editNombreCliente.setText(cita.cliente)
-                binding.editServicio.setText(cita.servicio)
-                binding.editFecha.setText(cita.fecha)
-                binding.editHora.setText(cita.hora)
-                // Si tienes el campo notas en el formulario, descomenta:
-                // binding.editNotas.setText(cita.notas)
-            }
+        // Ahora sí existe obtenerCitaPorId()
+        citaViewModel.obtenerCitaPorId(citaId).observe(this) { cita: Cita ->
+            citaOriginal = cita
+            binding.editNombreCliente.setText(cita.cliente)
+            binding.editServicio.setText(cita.servicio)
+            binding.editFecha.setText(cita.fecha)
+            binding.editHora.setText(cita.hora)
+            binding.editNotas.setText(cita.notas)
         }
 
         binding.btnGuardar.setOnClickListener {
-            val nombre = binding.editNombreCliente.text.toString()
-            val servicio = binding.editServicio.text.toString()
-            val fecha = binding.editFecha.text.toString()
-            val hora = binding.editHora.text.toString()
-            // Si tienes notas en el formulario, úsalo aquí:
-            // val notas = binding.editNotas.text.toString()
+            val nombre   = binding.editNombreCliente.text.toString().trim()
+            val servicio = binding.editServicio.text.toString().trim()
+            val fecha    = binding.editFecha.text.toString().trim()
+            val hora     = binding.editHora.text.toString().trim()
+            val notas    = binding.editNotas.text.toString().trim()
+            val userId   = auth.currentUser?.uid
+            val original = citaOriginal
 
-            // Creamos la copia actualizada;
-            // dejamos las notas originales para no perderlas
-            val citaActualizada = citaOriginal?.copy(
-                cliente = nombre,
+            if (original == null || userId == null) {
+                Toast.makeText(this, "Error al actualizar cita", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (nombre.isEmpty() || servicio.isEmpty() || fecha.isEmpty() || hora.isEmpty()) {
+                Toast.makeText(this, "Completa los campos obligatorios", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val citaActualizada = original.copy(
+                userId   = userId,
+                cliente  = nombre,
                 servicio = servicio,
-                fecha = fecha,
-                hora = hora,
-                notas = citaOriginal?.notas ?: ""
+                fecha    = fecha,
+                hora     = hora,
+                notas    = notas
             )
 
-            if (citaActualizada != null) {
-                citaViewModel.actualizar(citaActualizada)
-                Toast.makeText(this, "Cita actualizada", Toast.LENGTH_SHORT).show()
-                finish()
-            }
+            AlarmScheduler.cancelReminder(this, citaActualizada.id)
+            citaViewModel.actualizar(citaActualizada)
+            AlarmScheduler.scheduleReminder(this, citaActualizada)
+            Toast.makeText(this, "Cita actualizada", Toast.LENGTH_SHORT).show()
+            finish()
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }

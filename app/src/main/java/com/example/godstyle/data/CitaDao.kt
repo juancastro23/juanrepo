@@ -15,9 +15,10 @@ interface CitaDao {
     @Delete
     suspend fun eliminarCita(cita: Cita)
 
-    @Query("SELECT * FROM citas ORDER BY fecha, hora")
-    fun obtenerTodasLasCitas(): LiveData<List<Cita>>
+    @Query("SELECT * FROM citas WHERE userId = :userId ORDER BY fecha, hora")
+    fun obtenerCitasPorUsuario(userId: String): LiveData<List<Cita>>
 
+    // <-- Este es el método que faltaba:
     @Query("SELECT * FROM citas WHERE id = :id")
     fun obtenerCitaPorId(id: Int): LiveData<Cita>
 }

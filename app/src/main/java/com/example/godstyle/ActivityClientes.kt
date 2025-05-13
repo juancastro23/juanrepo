@@ -11,6 +11,7 @@ import com.example.godstyle.databinding.ActivityClientesBinding
 import com.example.godstyle.model.Cita
 import com.example.godstyle.viewmodel.CitaViewModel
 import com.example.godstyle.viewmodel.CitaViewModelFactory
+import com.google.firebase.auth.FirebaseAuth
 
 class ActivityClientes : AppCompatActivity() {
 
@@ -24,24 +25,29 @@ class ActivityClientes : AppCompatActivity() {
         binding = ActivityClientesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 1) Creamos el adapter, pasando lambdas para eliminar y para editar
         val adapter = CitaAdapter(
             onDeleteClick = { cita -> confirmarEliminacion(cita) },
             onEditClick = { cita ->
-                // 2) Al pulsar editar, lanzamos EditarCitaActivity con el ID
                 val intent = Intent(this, EditarCitaActivity::class.java).apply {
                     putExtra("cita_id", cita.id)
                 }
                 startActivity(intent)
             }
         )
-
-        // 3) Configuramos el RecyclerView
         binding.recyclerCitas.layoutManager = LinearLayoutManager(this)
         binding.recyclerCitas.adapter = adapter
 
-        // 4) Observamos la lista y la pasamos al adapter
-        citaViewModel.todasLasCitas.observe(this) { citas ->
+        // --- FILTRAR POR USUARIO LOGUEADO ---
+        val userId = FirebaseAuth.getInstance().currentUser?.uid
+            ?: run {
+                // si no hay usuario, volver a login
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
+                return
+            }
+
+        // Observar solo las citas de este usuario
+        citaViewModel.obtenerCitasUsuario(userId).observe(this) { citas ->
             adapter.submitList(citas)
         }
     }

@@ -6,7 +6,13 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.godstyle.model.Cita
 
-@Database(entities = [Cita::class], version = 2, exportSchema = false)
+/**
+ * Base de datos de Room para las citas.
+ * Se incrementa la versión tras cambios en el esquema y
+ * se usa fallbackToDestructiveMigration() para recrear la BD
+ * automáticamente durante el desarrollo.
+ */
+@Database(entities = [Cita::class], version = 2, exportSchema = true)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun citaDao(): CitaDao
 
@@ -19,9 +25,10 @@ abstract class AppDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "godstyle_db"
+                    "citas_db"
                 )
-                    .fallbackToDestructiveMigration() // Evita el error fatal
+                    // Permite destruir y recrear la BD si cambia el esquema
+                    .fallbackToDestructiveMigration()
                     .build()
                 INSTANCE = instance
                 instance
