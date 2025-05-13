@@ -1,30 +1,58 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.godstyle">
+
+    <!-- Permisos para notificaciones y alarmas exactas -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
 
     <application
         android:name=".GodStyleApplication"
         android:allowBackup="true"
-        android:label="GodStyle"
-        android:icon="@mipmap/ic_launcher"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
+        android:label="@string/app_name"
         android:theme="@style/Theme.GodStyle">
 
+        <!-- LoginActivity como launcher -->
         <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity" android:exported="false" />
-        <activity android:name=".AnadirCitaActivity" android:exported="false" />
-        <activity android:name=".ActivityClientes" android:exported="false" />
-        <activity android:name=".EditarCitaActivity" />
+        <!-- Registro de usuario -->
+        <activity
+            android:name=".RegisterActivity"
+            android:parentActivityName=".LoginActivity"
+            android:exported="false" />
 
+        <!-- MainActivity (menú principal) -->
+        <activity
+            android:name=".MainActivity"
+            android:parentActivityName=".LoginActivity"
+            android:exported="false" />
 
+        <!-- Listado de citas -->
+        <activity
+            android:name=".ActivityClientes"
+            android:parentActivityName=".MainActivity"
+            android:exported="false" />
 
+        <!-- Añadir/Editar cita -->
+        <activity
+            android:name=".AnadirCitaActivity"
+            android:parentActivityName=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditarCitaActivity"
+            android:parentActivityName=".MainActivity"
+            android:exported="false" />
+
+        <!-- Receptor para las alarmas -->
+        <receiver
+            android:name=".notification.AlarmReceiver"
+            android:exported="false" />
     </application>
-
 </manifest>

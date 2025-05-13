@@ -1,38 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="16dp"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp">
 
-    <EditText
-        android:id="@+id/editNombreCliente"
-        android:hint="Nombre del cliente"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/editServicio"
-        android:hint="Servicio"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <!-- Campo Cliente -->
+        <EditText
+            android:id="@+id/editNombreCliente"
+            android:hint="Nombre del cliente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/editFecha"
-        android:hint="Fecha (dd/MM/yyyy)"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <!-- Campo Servicio -->
+        <EditText
+            android:id="@+id/editServicio"
+            android:hint="Servicio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/editHora"
-        android:hint="Hora (hh:mm)"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <!-- Campo Fecha -->
+        <EditText
+            android:id="@+id/editFecha"
+            android:hint="Fecha (dd/MM/yyyy)"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/btnGuardar"
-        android:text="Guardar cambios"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"/>
-</LinearLayout>
+        <!-- Campo Hora -->
+        <EditText
+            android:id="@+id/editHora"
+            android:hint="Hora (hh:mm)"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- **Campo Notas**: así debe llamarse para que Binding lo reconozca -->
+        <EditText
+            android:id="@+id/editNotas"
+            android:hint="Notas"
+            android:inputType="textMultiLine"
+            android:minLines="3"
+            android:gravity="top|start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Botón Guardar -->
+        <Button
+            android:id="@+id/btnGuardar"
+            android:text="Guardar cambios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp" />
+    </LinearLayout>
+</ScrollView>
