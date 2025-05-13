@@ -17,4 +17,7 @@ interface CitaDao {
 
     @Query("SELECT * FROM citas ORDER BY fecha, hora")
     fun obtenerTodasLasCitas(): LiveData<List<Cita>>
+
+    @Query("SELECT * FROM citas WHERE id = :id")
+    fun obtenerCitaPorId(id: Int): LiveData<Cita>
 }

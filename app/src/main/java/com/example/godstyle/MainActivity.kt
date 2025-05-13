@@ -14,9 +14,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Botón para añadir cita
         binding.btnAnadirCita.setOnClickListener {
-            val intent = Intent(this, AnadirCitaActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, AnadirCitaActivity::class.java))
+        }
+
+        // Botón para ver el listado de citas
+        binding.btnVerCitas.setOnClickListener {
+            startActivity(Intent(this, ActivityClientes::class.java))
         }
     }
 }

@@ -19,6 +19,11 @@ class CitaViewModel(private val repository: CitaRepository) : ViewModel() {
     fun eliminar(cita: Cita) = viewModelScope.launch {
         repository.eliminar(cita)
     }
+
+    fun obtenerCitaPorId(id: Int): LiveData<Cita> {
+        return repository.obtenerPorId(id)
+    }
+
 }
 
 class CitaViewModelFactory(private val repository: CitaRepository) : ViewModelProvider.Factory {
