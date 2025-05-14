@@ -1,17 +1,22 @@
+// app/src/main/java/com/example/godstyle/repository/CitaRepository.kt
 package com.example.godstyle.repository
 
-import androidx.lifecycle.LiveData
 import com.example.godstyle.data.CitaDao
 import com.example.godstyle.model.Cita
+import kotlinx.coroutines.flow.Flow
 
-class CitaRepository(private val citaDao: CitaDao) {
-    fun obtenerCitasPorUsuario(userId: String): LiveData<List<Cita>> =
-        citaDao.obtenerCitasPorUsuario(userId)
+class CitaRepository(private val dao: CitaDao) {
 
-    fun obtenerPorId(id: Int): LiveData<Cita> =
-        citaDao.obtenerCitaPorId(id)
+    fun obtenerCitasPorUsuario(userId: String): Flow<List<Cita>> =
+        dao.getCitasPorUsuario(userId)
 
-    suspend fun insertar(cita: Cita) = citaDao.insertarCita(cita)
-    suspend fun actualizar(cita: Cita) = citaDao.actualizarCita(cita)
-    suspend fun eliminar(cita: Cita) = citaDao.eliminarCita(cita)
+    fun obtenerCitasPorFechaUsuario(userId: String, fecha: String): Flow<List<Cita>> =
+        dao.getCitasPorFechaUsuario(userId, fecha)
+
+    fun obtenerCitaPorId(id: Int): Flow<Cita> =
+        dao.getCitaPorId(id)
+
+    suspend fun insertar(cita: Cita) = dao.insertar(cita)
+    suspend fun actualizar(cita: Cita) = dao.actualizar(cita)
+    suspend fun eliminar(cita: Cita) = dao.eliminar(cita)
 }

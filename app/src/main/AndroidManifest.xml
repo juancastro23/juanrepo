@@ -5,12 +5,18 @@
     <!-- Permisos para notificaciones y alarmas exactas -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+
 
     <application
         android:name=".GodStyleApplication"
         android:allowBackup="true"
         android:label="@string/app_name"
         android:theme="@style/Theme.GodStyle">
+
+        <activity android:name=".CalendarActivity" android:exported="false"/>
+        <activity android:name=".EditarCitaActivity" android:exported="false"/>
 
         <!-- LoginActivity como launcher -->
         <activity
@@ -43,10 +49,6 @@
         <!-- Añadir/Editar cita -->
         <activity
             android:name=".AnadirCitaActivity"
-            android:parentActivityName=".MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".EditarCitaActivity"
             android:parentActivityName=".MainActivity"
             android:exported="false" />
 

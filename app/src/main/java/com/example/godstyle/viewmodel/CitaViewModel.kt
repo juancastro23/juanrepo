@@ -1,22 +1,24 @@
 package com.example.godstyle.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.godstyle.model.Cita
 import com.example.godstyle.repository.CitaRepository
 import kotlinx.coroutines.launch
 
-class CitaViewModel(private val repository: CitaRepository) : ViewModel() {
+class CitaViewModel(private val repo: CitaRepository) : ViewModel() {
 
-    fun obtenerCitasUsuario(userId: String): LiveData<List<Cita>> =
-        repository.obtenerCitasPorUsuario(userId)
+    fun obtenerCitasPorUsuario(userId: String): LiveData<List<Cita>> =
+        repo
+            .obtenerCitasPorUsuario(userId)
+            .asLiveData()
 
-    // <-- Método para editar:
+    fun obtenerCitasPorFechaUsuario(userId: String, fecha: String): LiveData<List<Cita>> =
+        repo.obtenerCitasPorFechaUsuario(userId, fecha).asLiveData()
+
     fun obtenerCitaPorId(id: Int): LiveData<Cita> =
-        repository.obtenerPorId(id)
+        repo.obtenerCitaPorId(id).asLiveData()
 
-    fun insertar(cita: Cita) = viewModelScope.launch { repository.insertar(cita) }
-    fun actualizar(cita: Cita) = viewModelScope.launch { repository.actualizar(cita) }
-    fun eliminar(cita: Cita) = viewModelScope.launch { repository.eliminar(cita) }
+    fun insertar(cita: Cita) = viewModelScope.launch { repo.insertar(cita) }
+    fun actualizar(cita: Cita) = viewModelScope.launch { repo.actualizar(cita) }
+    fun eliminar(cita: Cita) = viewModelScope.launch { repo.eliminar(cita) }
 }

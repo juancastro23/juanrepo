@@ -3,4 +3,7 @@
     <string name="iniciar_sesion">Iniciar sesión</string>
     <string name="registrarse">Registrarse</string>
     <string name="guardar">Guardar</string>
+    <string name="citas_del_dia_descripcion">
+    Lista de citas programadas para el día seleccionado
+</string>
 </resources>

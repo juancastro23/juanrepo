@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope             // ← nuevo
 import com.example.godstyle.databinding.ActivityEditarCitaBinding
 import com.example.godstyle.model.Cita
 import com.example.godstyle.notification.AlarmScheduler
 import com.example.godstyle.viewmodel.CitaViewModel
 import com.example.godstyle.viewmodel.CitaViewModelFactory
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.launch                    // ← nuevo
 
 class EditarCitaActivity : AppCompatActivity() {
 
@@ -34,15 +36,16 @@ class EditarCitaActivity : AppCompatActivity() {
             return
         }
 
-        // Ahora sí existe obtenerCitaPorId()
-        citaViewModel.obtenerCitaPorId(citaId).observe(this) { cita: Cita ->
-            citaOriginal = cita
-            binding.editNombreCliente.setText(cita.cliente)
-            binding.editServicio.setText(cita.servicio)
-            binding.editFecha.setText(cita.fecha)
-            binding.editHora.setText(cita.hora)
-            binding.editNotas.setText(cita.notas)
-        }
+        // Observa la cita (si tu ViewModel lo expone así)
+        citaViewModel.obtenerCitaPorId(citaId)
+            .observe(this) { cita: Cita ->
+                citaOriginal = cita
+                binding.editNombreCliente.setText(cita.cliente)
+                binding.editServicio.setText(cita.servicio)
+                binding.editFecha.setText(cita.fecha)
+                binding.editHora.setText(cita.hora)
+                binding.editNotas.setText(cita.notas)
+            }
 
         binding.btnGuardar.setOnClickListener {
             val nombre   = binding.editNombreCliente.text.toString().trim()
@@ -71,11 +74,14 @@ class EditarCitaActivity : AppCompatActivity() {
                 notas    = notas
             )
 
-            AlarmScheduler.cancelReminder(this, citaActualizada.id)
-            citaViewModel.actualizar(citaActualizada)
-            AlarmScheduler.scheduleReminder(this, citaActualizada)
-            Toast.makeText(this, "Cita actualizada", Toast.LENGTH_SHORT).show()
-            finish()
+            // Actualiza dentro de coroutine
+            lifecycleScope.launch {
+                AlarmScheduler.cancelReminder(this@EditarCitaActivity, citaActualizada.id)
+                citaViewModel.actualizar(citaActualizada)
+                AlarmScheduler.scheduleReminder(this@EditarCitaActivity, citaActualizada)
+                Toast.makeText(this@EditarCitaActivity, "Cita actualizada", Toast.LENGTH_SHORT).show()
+                finish()
+            }
         }
     }
 
