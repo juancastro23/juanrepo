@@ -1,20 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
     android:orientation="vertical"
-    android:padding="8dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp">
 
+    <!-- Calendario -->
     <CalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
+
+    <!-- Citas del día -->
+    <TextView
+        android:id="@+id/tvHoy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Citas para hoy:"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCitasDelDia"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:nestedScrollingEnabled="false"/>
+
+    <!-- Historial de citas -->
+    <TextView
+        android:id="@+id/tvHistorial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Historial de citas:"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvHistorial"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:contentDescription="@string/citas_del_dia_descripcion"
-        android:focusable="true"/>
+        android:nestedScrollingEnabled="false"/>
+
 </LinearLayout>

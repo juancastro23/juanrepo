@@ -13,6 +13,7 @@ import com.example.godstyle.model.Cita
 import com.example.godstyle.viewmodel.CitaViewModel
 import com.example.godstyle.viewmodel.CitaViewModelFactory
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
@@ -25,51 +26,74 @@ class CalendarActivity : AppCompatActivity() {
         CitaViewModelFactory((application as GodStyleApplication).repository)
     }
     private val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+    private var selectedDate: String = dateFormat.format(Date())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCalendarBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val adapter = CitaAdapter(
-            onDeleteClick = { cita ->
-                // mostramos confirmación
-                AlertDialog.Builder(this)
-                    .setTitle("Eliminar cita")
-                    .setMessage("¿Estás seguro de que quieres eliminar esta cita?")
-                    .setPositiveButton("Sí") { _, _ ->
-                        lifecycleScope.launch {
-                            viewModel.eliminar(cita)
-                        }
-                    }
-                    .setNegativeButton("Cancelar", null)
-                    .show()
-            },
-            onEditClick = { cita ->
-                startActivity(Intent(this, EditarCitaActivity::class.java).apply {
-                    putExtra("cita_id", cita.id)
-                })
-            }
+        // Setup RecyclerViews
+        val adapterHoy = CitaAdapter(
+            onDeleteClick = ::confirmarYEliminar,
+            onEditClick   = ::irAEditar
         )
-
         binding.rvCitasDelDia.layoutManager = LinearLayoutManager(this)
-        binding.rvCitasDelDia.adapter = adapter
+        binding.rvCitasDelDia.adapter = adapterHoy
+
+        val adapterHistorial = CitaAdapter(
+            onDeleteClick = ::confirmarYEliminar,
+            onEditClick   = ::irAEditar
+        )
+        binding.rvHistorial.layoutManager = LinearLayoutManager(this)
+        binding.rvHistorial.adapter = adapterHistorial
 
         val uid = auth.currentUser?.uid ?: return
 
-        fun cargarCitasPara(fecha: String) {
+        fun cargarPara(fecha: String) {
+            selectedDate = fecha
+            // 1) Citas del día
             viewModel.obtenerCitasPorFechaUsuario(uid, fecha)
-                .observe(this) { lista ->
-                    adapter.submitList(lista)
+                .observe(this) { listaHoy ->
+                    adapterHoy.submitList(listaHoy)
+                }
+            // 2) Historial: todas las citas != fecha y fecha < hoy
+            viewModel.obtenerCitasPorUsuario(uid)
+                .observe(this) { todas ->
+                    val historial = todas.filter { cita ->
+                        val citaDate = dateFormat.parse(cita.fecha)!!
+                        val selDate  = dateFormat.parse(fecha)!!
+                        citaDate.before(selDate)
+                    }
+                    adapterHistorial.submitList(historial)
                 }
         }
 
-        // carga inicial: hoy
-        cargarCitasPara(dateFormat.format(Date()))
+        // carga inicial
+        cargarPara(selectedDate)
 
         binding.calendarView.setOnDateChangeListener { _, year, month, day ->
             val cal = Calendar.getInstance().apply { set(year, month, day) }
-            cargarCitasPara(dateFormat.format(cal.time))
+            cargarPara(dateFormat.format(cal.time))
         }
+    }
+
+    private fun confirmarYEliminar(cita: Cita) {
+        AlertDialog.Builder(this)
+            .setTitle("Eliminar cita")
+            .setMessage("¿Estás seguro de que quieres eliminar esta cita?")
+            .setPositiveButton("Sí") { _, _ ->
+                lifecycleScope.launch(Dispatchers.IO) {
+                    viewModel.eliminar(cita)
+                }
+            }
+            .setNegativeButton("Cancelar", null)
+            .show()
+    }
+
+    private fun irAEditar(cita: Cita) {
+        startActivity(Intent(this, EditarCitaActivity::class.java).apply {
+            putExtra("cita_id", cita.id)
+        })
     }
 }
