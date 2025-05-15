@@ -2,49 +2,76 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp">
+    android:padding="24dp"
+    android:background="#FAFAFA">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
 
+        <!-- Encabezado con ícono de cliente -->
+        <ImageView
+            android:id="@+id/iconoRegistro"
+            android:layout_width="63dp"
+            android:layout_height="46dp"
+            android:src="@drawable/ic_cliente"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="Icono Registro" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registro"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:textColor="#222"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Campos del formulario -->
         <EditText
             android:id="@+id/emailRegisterEditText"
             android:hint="Email"
             android:inputType="textEmailAddress"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:backgroundTint="#333" />
 
         <EditText
             android:id="@+id/passwordRegisterEditText"
             android:hint="Contraseña (mín 6)"
             android:inputType="textPassword"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:backgroundTint="#333" />
 
         <EditText
             android:id="@+id/confirmPasswordEditText"
             android:hint="Repite la contraseña"
             android:inputType="textPassword"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:backgroundTint="#333" />
 
         <Button
             android:id="@+id/registerButton"
             android:text="Registrarse"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:backgroundTint="#111"
+            android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/loginRedirectButton"
             android:text="Ya tengo cuenta"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
+            android:layout_height="wrap_content"
+            android:backgroundTint="#444"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 </ScrollView>

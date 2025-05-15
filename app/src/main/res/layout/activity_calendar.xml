@@ -1,10 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/container"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="#FAFAFA">
+
+    <!-- Encabezado con ícono y título -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="16dp">
+
+        <ImageView
+            android:id="@+id/iconoCalendario"
+            android:layout_width="63dp"
+            android:layout_height="46dp"
+            android:contentDescription="Icono Calendario"
+            android:src="@drawable/ic_calendar" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Calendario"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="#222"
+            android:layout_marginTop="6dp" />
+    </LinearLayout>
 
     <!-- Calendario -->
     <CalendarView
@@ -12,35 +37,37 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <!-- Citas del día -->
+    <!-- Sección Citas para hoy -->
     <TextView
         android:id="@+id/tvHoy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Citas para hoy:"
         android:textStyle="bold"
-        android:layout_marginTop="8dp"/>
+        android:textSize="16sp"
+        android:layout_marginTop="8dp"
+        android:textColor="#333" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCitasDelDia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:nestedScrollingEnabled="false"/>
+        android:nestedScrollingEnabled="false" />
 
-    <!-- Historial de citas -->
     <TextView
         android:id="@+id/tvHistorial"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Historial de citas:"
         android:textStyle="bold"
-        android:layout_marginTop="16dp"/>
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        android:textColor="#333" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvHistorial"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:nestedScrollingEnabled="false"/>
-
+        android:nestedScrollingEnabled="false" />
 </LinearLayout>

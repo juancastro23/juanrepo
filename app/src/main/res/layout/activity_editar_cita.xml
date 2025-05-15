@@ -2,42 +2,65 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="#FFFFFF">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
 
-        <!-- Campo Cliente -->
+        <!-- Encabezado con ícono de servicio -->
+        <ImageView
+            android:id="@+id/iconoServicio"
+            android:layout_width="63dp"
+            android:layout_height="46dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="Icono Servicio"
+            android:src="@drawable/ic_cita" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Editar Cita"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:textColor="#222"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Campos del formulario -->
         <EditText
             android:id="@+id/editNombreCliente"
             android:hint="Nombre del cliente"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:backgroundTint="#333" />
 
-        <!-- Campo Servicio -->
         <EditText
             android:id="@+id/editServicio"
             android:hint="Servicio"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="#333" />
 
-        <!-- Campo Fecha -->
         <EditText
             android:id="@+id/editFecha"
             android:hint="Fecha (dd/MM/yyyy)"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="#333" />
 
-        <!-- Campo Hora -->
         <EditText
             android:id="@+id/editHora"
             android:hint="Hora (hh:mm)"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="#333" />
 
-        <!-- **Campo Notas**: así debe llamarse para que Binding lo reconozca -->
         <EditText
             android:id="@+id/editNotas"
             android:hint="Notas"
@@ -45,14 +68,17 @@
             android:minLines="3"
             android:gravity="top|start"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="#333" />
 
-        <!-- Botón Guardar -->
         <Button
             android:id="@+id/btnGuardar"
             android:text="Guardar cambios"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp" />
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#000000"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 </ScrollView>

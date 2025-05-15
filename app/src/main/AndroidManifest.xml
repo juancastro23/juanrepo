@@ -18,16 +18,6 @@
         <activity android:name=".CalendarActivity" android:exported="false"/>
         <activity android:name=".EditarCitaActivity" android:exported="false"/>
 
-        <!-- LoginActivity como launcher -->
-        <activity
-            android:name=".LoginActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-
         <!-- Registro de usuario -->
         <activity
             android:name=".RegisterActivity"
@@ -51,6 +41,22 @@
             android:name=".AnadirCitaActivity"
             android:parentActivityName=".MainActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/Theme.GodStyle"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+        <!-- Login sin launcher -->
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" />
 
         <!-- Receptor para las alarmas -->
         <receiver
