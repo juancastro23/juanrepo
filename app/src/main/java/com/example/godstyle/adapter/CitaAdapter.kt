@@ -29,24 +29,18 @@ class CitaAdapter(
     inner class CitaViewHolder(private val binding: ItemCitaBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(cita: Cita) {
-            binding.tvCliente.text = cita.cliente
-            binding.tvServicio.text = cita.servicio
-            binding.tvFecha.text    = "${cita.fecha} ${cita.hora}"
+        fun bind(cita: Cita) = with(binding) {
+            tvCliente.text    = cita.cliente
+            tvServicio.text   = cita.servicio
+            tvFechaHora.text  = "${cita.fecha}  ${cita.hora}"
 
-            binding.btnEditar.setOnClickListener {
-                onEditClick(cita)
-            }
-            binding.btnBorrar.setOnClickListener {
-                onDeleteClick(cita)
-            }
+            btnEditar.setOnClickListener { onEditClick(cita) }
+            btnBorrar.setOnClickListener { onDeleteClick(cita) }
         }
     }
 
-    companion object {
-        private val DiffCallback = object : DiffUtil.ItemCallback<Cita>() {
-            override fun areItemsTheSame(old: Cita, new: Cita) = old.id == new.id
-            override fun areContentsTheSame(old: Cita, new: Cita) = old == new
-        }
+    private object DiffCallback : DiffUtil.ItemCallback<Cita>() {
+        override fun areItemsTheSame(old: Cita, new: Cita) = old.id == new.id
+        override fun areContentsTheSame(old: Cita, new: Cita) = old == new
     }
 }

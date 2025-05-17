@@ -7,19 +7,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface CitaDao {
-    @Query("SELECT * FROM cita_table")
-    fun getTodasLasCitas(): Flow<List<Cita>>
-
-    @Query("SELECT * FROM cita_table WHERE userId = :userId")
-    fun getCitasPorUsuario(userId: String): Flow<List<Cita>>
-
-    @Query("SELECT * FROM cita_table WHERE id = :id")
-    fun getCitaPorId(id: Int): Flow<Cita>
-
-    @Query("SELECT * FROM cita_table WHERE userId = :userId AND fecha = :fecha")
-    fun getCitasPorFechaUsuario(userId: String, fecha: String): Flow<List<Cita>>
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertar(cita: Cita)
 
     @Update
@@ -27,4 +15,17 @@ interface CitaDao {
 
     @Delete
     suspend fun eliminar(cita: Cita)
+
+    @Query("SELECT * FROM cita_table WHERE userId = :userId")
+    fun getCitasPorUsuario(userId: String): Flow<List<Cita>>
+
+    @Query("SELECT * FROM cita_table WHERE userId = :userId AND fecha = :fecha")
+    fun getCitasPorFechaUsuario(userId: String, fecha: String): Flow<List<Cita>>
+
+    @Query("SELECT * FROM cita_table WHERE id = :id")
+    fun getCitaPorId(id: Int): Flow<Cita>
+
+    /** Devuelve todas las citas de un día, para comprobar solapamientos */
+    @Query("SELECT * FROM cita_table WHERE fecha = :fecha")
+    suspend fun getCitasPorFecha(fecha: String): List<Cita>
 }

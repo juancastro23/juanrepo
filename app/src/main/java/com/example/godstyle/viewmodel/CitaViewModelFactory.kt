@@ -1,3 +1,4 @@
+// app/src/main/java/com/example/godstyle/viewmodel/CitaViewModelFactory.kt
 package com.example.godstyle.viewmodel
 
 import androidx.lifecycle.ViewModel
@@ -13,4 +14,3 @@ class CitaViewModelFactory(private val repo: CitaRepository) : ViewModelProvider
         throw IllegalArgumentException("Unknown ViewModel class")
     }
 }
-

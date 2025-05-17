@@ -1,17 +1,18 @@
+// app/src/main/java/com/example/godstyle/EditarCitaActivity.kt
 package com.example.godstyle
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope             // ← nuevo
+import androidx.lifecycle.lifecycleScope
 import com.example.godstyle.databinding.ActivityEditarCitaBinding
 import com.example.godstyle.model.Cita
 import com.example.godstyle.notification.AlarmScheduler
 import com.example.godstyle.viewmodel.CitaViewModel
 import com.example.godstyle.viewmodel.CitaViewModelFactory
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.coroutines.launch                    // ← nuevo
+import kotlinx.coroutines.launch
 
 class EditarCitaActivity : AppCompatActivity() {
 
@@ -36,19 +37,18 @@ class EditarCitaActivity : AppCompatActivity() {
             return
         }
 
-        // Observa la cita (si tu ViewModel lo expone así)
-        citaViewModel.obtenerCitaPorId(citaId)
-            .observe(this) { cita: Cita ->
-                citaOriginal = cita
-                binding.editNombreCliente.setText(cita.cliente)
-                binding.editServicio.setText(cita.servicio)
-                binding.editFecha.setText(cita.fecha)
-                binding.editHora.setText(cita.hora)
-                binding.editNotas.setText(cita.notas)
-            }
+        // Cargar la cita y rellenar los campos
+        citaViewModel.obtenerCitaPorId(citaId).observe(this) { cita ->
+            citaOriginal = cita
+            binding.editNombreCliente.setText(cita.cliente)
+            binding.editServicio.setText(cita.servicio)
+            binding.editFecha.setText(cita.fecha)
+            binding.editHora.setText(cita.hora)
+            binding.editNotas.setText(cita.notas)
+        }
 
         binding.btnGuardar.setOnClickListener {
-            val nombre   = binding.editNombreCliente.text.toString().trim()
+            val cliente  = binding.editNombreCliente.text.toString().trim()
             val servicio = binding.editServicio.text.toString().trim()
             val fecha    = binding.editFecha.text.toString().trim()
             val hora     = binding.editHora.text.toString().trim()
@@ -60,22 +60,22 @@ class EditarCitaActivity : AppCompatActivity() {
                 Toast.makeText(this, "Error al actualizar cita", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if (nombre.isEmpty() || servicio.isEmpty() || fecha.isEmpty() || hora.isEmpty()) {
+            if (cliente.isEmpty() || servicio.isEmpty() || fecha.isEmpty() || hora.isEmpty()) {
                 Toast.makeText(this, "Completa los campos obligatorios", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             val citaActualizada = original.copy(
                 userId   = userId,
-                cliente  = nombre,
+                cliente  = cliente,
                 servicio = servicio,
                 fecha    = fecha,
                 hora     = hora,
                 notas    = notas
             )
 
-            // Actualiza dentro de coroutine
             lifecycleScope.launch {
+                // Cancelar y reprogramar la notificación interna
                 AlarmScheduler.cancelReminder(this@EditarCitaActivity, citaActualizada.id)
                 citaViewModel.actualizar(citaActualizada)
                 AlarmScheduler.scheduleReminder(this@EditarCitaActivity, citaActualizada)

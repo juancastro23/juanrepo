@@ -18,5 +18,13 @@ class CitaRepository(private val dao: CitaDao) {
 
     suspend fun insertar(cita: Cita) = dao.insertar(cita)
     suspend fun actualizar(cita: Cita) = dao.actualizar(cita)
-    suspend fun eliminar(cita: Cita) = dao.eliminar(cita)
+    suspend fun eliminar(cita: Cita)   = dao.eliminar(cita)
+
+    /**
+     * Devuelve true si ya existe una cita en la misma fecha y hora
+     */
+    suspend fun existeCita(fecha: String, hora: String): Boolean {
+        val todas = dao.getCitasPorFecha(fecha)
+        return todas.any { it.hora == hora }
+    }
 }
