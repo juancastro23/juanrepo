@@ -1,5 +1,5 @@
 GodStyle - Gestión de Citas para Profesionales de la Estética
-<p align="center"> <img src="https://img.shields.io/badge/Kotlin-1.9.0-blue?logo=kotlin&style=for-the-badge" alt="Kotlin Version"> <img src="https://img.shields.io/badge/Android%20Studio-Hedgehog-green?logo=androidstudio&style=for-the-badge" alt="Android Studio"> <img src="https://img.shields.io/badge/min%20SDK-API%2026%20(Android%208.0)-orange?logo=android&style=for-the-badge" alt="Min SDK"> <img src="https://img.shields.io/github/license/juancastro23/juanrepo?style=for-the-badge" alt="License"> </p><p align="center"> <img src="media/image.png" alt="GodStyle Banner" width="600"> </p>
+<p align="center"> <img src="https://img.shields.io/badge/Kotlin-1.9.0-blue?logo=kotlin&style=for-the-badge" alt="Kotlin Version"> <img src="https://img.shields.io/badge/Android%20Studio-Hedgehog-green?logo=androidstudio&style=for-the-badge" alt="Android Studio"> <img src="https://img.shields.io/badge/min%20SDK-API%2026%20(Android%208.0)-orange?logo=android&style=for-the-badge" alt="Min SDK"> <img src="https://img.shields.io/github/license/juancastro23/juanrepo?style=for-the-badge" alt="License"> </p><p align="center"> <img src="https://raw.githubusercontent.com/juancastro23/juanrepo/main/banner.png" alt="GodStyle Banner" width="600"> </p>
 
 GodStyle es una aplicación móvil diseñada para profesionales del sector estético (peluquerías, barberías, centros de belleza) que permite gestionar citas, clientes y servicios de forma eficiente, con soporte offline y notificaciones inteligentes.
 🔍 Características Principales
@@ -29,8 +29,7 @@ Navegación	Jetpack Navigation Component
 UI	XML + Material Design Components
 Control Versión	Git + GitHub
 📸 Capturas de Pantalla
-<div align="center"> <table> <tr> <td align="center"><b>Inicio de Sesión</b></td> <td align="center"><b>Lista de Citas</b></td> <td align="center"><b>Calendario</b></td> </tr> <tr> <td><img src="media/login_sc![login](https://github.com/user-attachments/assets/01858834-eb1e-485c-97bc-9b29b2668d6e)
-reen.png" width="200"></td> <td><img src="media/citas_screen.png" width="200"></td> <td><img src="media/calendar_screen.png" width="200"></td> </tr> <tr> <td align="center"><b>Crear Cita</b></td> <td align="center"><b>Notificación</b></td> <td align="center"><b>Perfil</b></td> </tr> <tr> <td><img src="media/add_appointment.png" width="200"></td> <td><img src="media/notification.png" width="200"></td> <td><img src="media/profile.png" width="200"></td> </tr> </table> </div>
+<div align="center"> <table> <tr> <td align="center"><b>Inicio de Sesión</b></td> <td align="center"><b>Lista de Citas</b></td> <td align="center"><b>Calendario</b></td> </tr> <tr> <td><img src="https://raw.githubusercontent.com/juancastro23/juanrepo/main/login.png" width="200"></td> <td><img src="https://raw.githubusercontent.com/juancastro23/juanrepo/main/listado.png" width="200"></td> <td><img src="https://raw.githubusercontent.com/juancastro23/juanrepo/main/citas.png" width="200"></td> </tr> <tr> <td align="center"><b>Crear Cita</b></td> <td align="center"><b>Notificación</b></td> <td align="center"><b>Detalles</b></td> </tr> <tr> <td><img src="https://raw.githubusercontent.com/juancastro23/juanrepo/main/formulario.png" width="200"></td> <td><img src="https://raw.githubusercontent.com/juancastro23/juanrepo/main/notificacion.png" width="200"></td> <td><img src="https://raw.githubusercontent.com/juancastro23/juanrepo/main/citas.png" width="200"></td> </tr> </table> </div>
 🚀 Instalación y Configuración
 Requisitos Previos
 
@@ -70,14 +69,14 @@ cd GodStyle
         Presionar el botón Run (▶️)
 
 Generar APK para Producción
-bash
+
 
 ./gradlew assembleRelease
 
 El APK se generará en app/build/outputs/apk/release/
 🧪 Pruebas
 Pruebas Unitarias
-bash
+
 
 ./gradlew test
 
@@ -87,13 +86,13 @@ Pruebas de Integración (Espresso)
 
     Ejecutar:
 
-bash
+
 
 ./gradlew connectedCheck
 
 📚 Documentación Técnica
 Diagrama de Arquitectura
-<p align="center"> <img src="media/image2.png" alt="Arquitectura" width="600"> </p>
+<p align="center"> <img src="https://raw.githubusercontent.com/juancastro23/juanrepo/main/architecture.png" alt="Arquitectura MVVM" width="600"> </p>
 Estructura de la Base de Datos
 kotlin
 
@@ -158,8 +157,10 @@ json
 Este proyecto está bajo la licencia MIT. Consulta el archivo LICENSE para más detalles.
 ✉️ Contacto
 
-Juan Castro Rodríguez
-Email
-LinkedIn
-GitHub
-<p align="center"> ✨ <strong>GodStyle</strong> - Transformando la gestión de citas para profesionales de la estética © 2025 ✨ </p>
+Juan Castro Rodríguez 
+Email jcastrro02@gmail.com
+LinkedIn https://www.linkedin.com/in/juan-castro-rodr%C3%ADguez-15a6862b0/
+GitHub https://github.com/juancastro23/juanrepo
+
+
+<p align="center"> ✨ <strong>GodStyle</strong> - Transformando la gestión de citas para profesionales de la estética © 2025 ✨ </p> ```
