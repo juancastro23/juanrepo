@@ -43,43 +43,38 @@ Pasos para Ejecutar el Proyecto
 
     Clonar el repositorio:
 
-
-    
-
     git clone https://github.com/juancastro23/juanrepo.git
     cd GodStyle
     
 Configurar Firebase:
 
+    Crear un proyecto en Firebase Console
 
-        Crear un proyecto en Firebase Console
+    Descargar el archivo google-services.json
 
-        Descargar el archivo google-services.json
-
-        Colocarlo en el directorio app/
+    Colocarlo en el directorio app/
 
 Abrir el proyecto en Android Studio:
 
-        Seleccionar File > Open y navegar a la carpeta del proyecto
+    Seleccionar File > Open y navegar a la carpeta del proyecto
 
-        Sincronizar dependencias con Gradle
+    Sincronizar dependencias con Gradle
 
 Ejecutar en emulador o dispositivo físico:
 
-        Seleccionar dispositivo en Android Studio
+    Seleccionar dispositivo en Android Studio
 
-        Presionar el botón Run (▶️)
+    Presionar el botón Run (▶️)
 
 Generar APK para Producción
 
-./gradlew assembleRelease
+    ./gradlew assembleRelease
 
 El APK se generará en app/build/outputs/apk/release/
 
 🧪 Pruebas
 
-    Pruebas Unitarias
-
+Pruebas Unitarias
 
     ./gradlew test
 
@@ -88,7 +83,6 @@ Pruebas de Integración (Espresso)
 Ejecutar un emulador o conectar dispositivo
 
 Ejecutar:
-
 
     ./gradlew connectedCheck
 
@@ -155,12 +149,23 @@ json
     Abre un Pull Request
 
 
-✉️ Contacto
+ 📬 Contacto  
 
-Juan Castro Rodríguez 
-    Email jcastrro02@gmail.com
-    LinkedIn https://www.linkedin.com/in/juan-castro-rodr%C3%ADguez-15a6862b0/
-    GitHub https://github.com/juancastro23/juanrepo
+**Juan Castro Rodríguez**  
+Desarrollador Android | DAM  
 
+<div align="center" style="margin: 30px 0;">
+  <a href="mailto:jcastrro02@gmail.com" style="text-decoration: none; margin: 0 10px;">
+    <img src="https://img.shields.io/badge/📧_Email-jcastrro02%40gmail.com-005FF9?style=for-the-badge&logo=gmail" alt="Email">
+  </a>
+  
+  <a href="https://www.linkedin.com/in/juan-castro-rodr%C3%ADguez-15a6862b0/" style="text-decoration: none; margin: 0 10px;">
+    <img src="https://img.shields.io/badge/👔_LinkedIn-Juan_Castro-0A66C2?style=for-the-badge&logo=linkedin" alt="LinkedIn">
+  </a>
+  
+  <a href="https://github.com/juancastro23/juanrepo" style="text-decoration: none; margin: 0 10px;">
+    <img src="https://img.shields.io/badge/💻_GitHub-juancastro23%2Fjuanrepo-181717?style=for-the-badge&logo=github" alt="GitHub">
+  </a>
+</div>
 
 <p align="center"> ✨ <strong>GodStyle</strong> - Transformando la gestión de citas para profesionales de la estética © 2025 ✨ </p> ```
