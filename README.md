@@ -43,7 +43,6 @@ Pasos para Ejecutar el Proyecto
 
     Clonar el repositorio:
 
-bash
 
 git clone https://github.com/juancastro23/juanrepo.git
 cd GodStyle
@@ -92,9 +91,8 @@ Pruebas de Integración (Espresso)
 
 📚 Documentación Técnica
 Diagrama de Arquitectura
-<p align="center"> <img src="https://raw.githubusercontent.com/juancastro23/juanrepo/main/architecture.png" alt="Arquitectura MVVM" width="600"> </p>
+<p align="center">" alt="Arquitectura MVVM" width="600"> </p>
 Estructura de la Base de Datos
-kotlin
 
 @Entity(tableName = "citas")
 data class Cita(
@@ -158,8 +156,11 @@ Este proyecto está bajo la licencia MIT. Consulta el archivo LICENSE para más 
 ✉️ Contacto
 
 Juan Castro Rodríguez 
+
 Email jcastrro02@gmail.com
+
 LinkedIn https://www.linkedin.com/in/juan-castro-rodr%C3%ADguez-15a6862b0/
+
 GitHub https://github.com/juancastro23/juanrepo
 
 
