@@ -29,7 +29,8 @@ Navegación	Jetpack Navigation Component
 UI	XML + Material Design Components
 Control Versión	Git + GitHub
 📸 Capturas de Pantalla
-<div align="center"> <table> <tr> <td align="center"><b>Inicio de Sesión</b></td> <td align="center"><b>Lista de Citas</b></td> <td align="center"><b>Calendario</b></td> </tr> <tr> <td><img src="media/login_screen.png" width="200"></td> <td><img src="media/citas_screen.png" width="200"></td> <td><img src="media/calendar_screen.png" width="200"></td> </tr> <tr> <td align="center"><b>Crear Cita</b></td> <td align="center"><b>Notificación</b></td> <td align="center"><b>Perfil</b></td> </tr> <tr> <td><img src="media/add_appointment.png" width="200"></td> <td><img src="media/notification.png" width="200"></td> <td><img src="media/profile.png" width="200"></td> </tr> </table> </div>
+<div align="center"> <table> <tr> <td align="center"><b>Inicio de Sesión</b></td> <td align="center"><b>Lista de Citas</b></td> <td align="center"><b>Calendario</b></td> </tr> <tr> <td><img src="media/login_sc![login](https://github.com/user-attachments/assets/01858834-eb1e-485c-97bc-9b29b2668d6e)
+reen.png" width="200"></td> <td><img src="media/citas_screen.png" width="200"></td> <td><img src="media/calendar_screen.png" width="200"></td> </tr> <tr> <td align="center"><b>Crear Cita</b></td> <td align="center"><b>Notificación</b></td> <td align="center"><b>Perfil</b></td> </tr> <tr> <td><img src="media/add_appointment.png" width="200"></td> <td><img src="media/notification.png" width="200"></td> <td><img src="media/profile.png" width="200"></td> </tr> </table> </div>
 🚀 Instalación y Configuración
 Requisitos Previos
 
