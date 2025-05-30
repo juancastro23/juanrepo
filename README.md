@@ -43,10 +43,14 @@ Pasos para Ejecutar el Proyecto
 
     Clonar el repositorio:
 
-git clone https://github.com/juancastro23/juanrepo.git
-cd GodStyle
 
-    Configurar Firebase:
+    
+
+    git clone https://github.com/juancastro23/juanrepo.git
+    cd GodStyle
+    
+Configurar Firebase:
+
 
         Crear un proyecto en Firebase Console
 
@@ -54,13 +58,13 @@ cd GodStyle
 
         Colocarlo en el directorio app/
 
-    Abrir el proyecto en Android Studio:
+Abrir el proyecto en Android Studio:
 
         Seleccionar File > Open y navegar a la carpeta del proyecto
 
         Sincronizar dependencias con Gradle
 
-    Ejecutar en emulador o dispositivo físico:
+Ejecutar en emulador o dispositivo físico:
 
         Seleccionar dispositivo en Android Studio
 
@@ -74,19 +78,19 @@ El APK se generará en app/build/outputs/apk/release/
 
 🧪 Pruebas
 
-Pruebas Unitarias
+    Pruebas Unitarias
 
 
-./gradlew test
+    ./gradlew test
 
 Pruebas de Integración (Espresso)
 
-    Ejecutar un emulador o conectar dispositivo
+Ejecutar un emulador o conectar dispositivo
 
-    Ejecutar:
+Ejecutar:
 
 
-./gradlew connectedCheck
+    ./gradlew connectedCheck
 
 📚 Documentación Técnica
 Diagrama de Arquitectura
@@ -150,15 +154,13 @@ json
 
     Abre un Pull Request
 
-📄 Licencia
 
-Este proyecto está bajo la licencia MIT. Consulta el archivo LICENSE para más detalles.
 ✉️ Contacto
 
 Juan Castro Rodríguez 
-Email jcastrro02@gmail.com
-LinkedIn https://www.linkedin.com/in/juan-castro-rodr%C3%ADguez-15a6862b0/
-GitHub https://github.com/juancastro23/juanrepo
+    Email jcastrro02@gmail.com
+    LinkedIn https://www.linkedin.com/in/juan-castro-rodr%C3%ADguez-15a6862b0/
+    GitHub https://github.com/juancastro23/juanrepo
 
 
 <p align="center"> ✨ <strong>GodStyle</strong> - Transformando la gestión de citas para profesionales de la estética © 2025 ✨ </p> ```
