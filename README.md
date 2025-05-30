@@ -43,52 +43,48 @@ Pasos para Ejecutar el Proyecto
 
     Clonar el repositorio:
 
-bash
+    git clone https://github.com/juancastro23/juanrepo.git
+    cd GodStyle
+    
+Configurar Firebase:
 
-git clone https://github.com/juancastro23/juanrepo.git
-cd GodStyle
+    Crear un proyecto en Firebase Console
 
-    Configurar Firebase:
+    Descargar el archivo google-services.json
 
-        Crear un proyecto en Firebase Console
+    Colocarlo en el directorio app/
 
-        Descargar el archivo google-services.json
+Abrir el proyecto en Android Studio:
 
-        Colocarlo en el directorio app/
+    Seleccionar File > Open y navegar a la carpeta del proyecto
 
-    Abrir el proyecto en Android Studio:
+    Sincronizar dependencias con Gradle
 
-        Seleccionar File > Open y navegar a la carpeta del proyecto
+Ejecutar en emulador o dispositivo físico:
 
-        Sincronizar dependencias con Gradle
+    Seleccionar dispositivo en Android Studio
 
-    Ejecutar en emulador o dispositivo físico:
-
-        Seleccionar dispositivo en Android Studio
-
-        Presionar el botón Run (▶️)
+    Presionar el botón Run (▶️)
 
 Generar APK para Producción
-bash
 
-./gradlew assembleRelease
+    ./gradlew assembleRelease
 
 El APK se generará en app/build/outputs/apk/release/
-🧪 Pruebas
-Pruebas Unitarias
-bash
 
-./gradlew test
+🧪 Pruebas
+
+Pruebas Unitarias
+
+    ./gradlew test
 
 Pruebas de Integración (Espresso)
 
-    Ejecutar un emulador o conectar dispositivo
+Ejecutar un emulador o conectar dispositivo
 
-    Ejecutar:
+Ejecutar:
 
-bash
-
-./gradlew connectedCheck
+    ./gradlew connectedCheck
 
 📚 Documentación Técnica
 Diagrama de Arquitectura
@@ -152,15 +148,24 @@ json
 
     Abre un Pull Request
 
-📄 Licencia
 
-Este proyecto está bajo la licencia MIT. Consulta el archivo LICENSE para más detalles.
-✉️ Contacto
+ 📬 Contacto  
 
-Juan Castro Rodríguez 
-Email jcastrro02@gmail.com
-LinkedIn https://www.linkedin.com/in/juan-castro-rodr%C3%ADguez-15a6862b0/
-GitHub https://github.com/juancastro23/juanrepo
+**Juan Castro Rodríguez**  
+Desarrollador Android | DAM  
 
+<div align="center" style="margin: 30px 0;">
+  <a href="mailto:jcastrro02@gmail.com" style="text-decoration: none; margin: 0 10px;">
+    <img src="https://img.shields.io/badge/📧_Email-jcastrro02%40gmail.com-005FF9?style=for-the-badge&logo=gmail" alt="Email">
+  </a>
+  
+  <a href="https://www.linkedin.com/in/juan-castro-rodr%C3%ADguez-15a6862b0/" style="text-decoration: none; margin: 0 10px;">
+    <img src="https://img.shields.io/badge/👔_LinkedIn-Juan_Castro-0A66C2?style=for-the-badge&logo=linkedin" alt="LinkedIn">
+  </a>
+  
+  <a href="https://github.com/juancastro23/juanrepo" style="text-decoration: none; margin: 0 10px;">
+    <img src="https://img.shields.io/badge/💻_GitHub-juancastro23%2Fjuanrepo-181717?style=for-the-badge&logo=github" alt="GitHub">
+  </a>
+</div>
 
 <p align="center"> ✨ <strong>GodStyle</strong> - Transformando la gestión de citas para profesionales de la estética © 2025 ✨ </p> ```
