@@ -1,51 +1,35 @@
 GodStyle - Gestión de Citas para Profesionales de la Estética
-
-Kotlin Version
-Android Studio
-Min SDK
+<p align="center"> <img src="https://img.shields.io/badge/Kotlin-1.9.0-blue?logo=kotlin&style=for-the-badge" alt="Kotlin Version"> <img src="https://img.shields.io/badge/Android%20Studio-Hedgehog-green?logo=androidstudio&style=for-the-badge" alt="Android Studio"> <img src="https://img.shields.io/badge/min%20SDK-API%2026%20(Android%208.0)-orange?logo=android&style=for-the-badge" alt="Min SDK"> <img src="https://img.shields.io/github/license/juancastro23/juanrepo?style=for-the-badge" alt="License"> </p><p align="center"> <img src="media/image.png" alt="GodStyle Banner" width="600"> </p>
 
 GodStyle es una aplicación móvil diseñada para profesionales del sector estético (peluquerías, barberías, centros de belleza) que permite gestionar citas, clientes y servicios de forma eficiente, con soporte offline y notificaciones inteligentes.
-
-GodStyle Banner
 🔍 Características Principales
 
-    Gestión completa de citas (crear, leer, actualizar, eliminar)
+    ✅ Gestión completa de citas (crear, leer, actualizar, eliminar)
 
-    Notificaciones automáticas 15 minutos antes de cada cita
+    ⏰ Notificaciones automáticas 15 minutos antes de cada cita
 
-    Funcionalidad offline con sincronización automática
+    📴 Funcionalidad offline con sincronización automática
 
-    Autenticación segura con Firebase
+    🔐 Autenticación segura con Firebase
 
-    Calendario integrado para visualización de citas
+    📅 Calendario integrado para visualización de citas
 
-    Interfaz intuitiva con navegación sencilla
+    🎨 Interfaz intuitiva con navegación sencilla
 
-    Soporte multi-dispositivo con almacenamiento en la nube
+    📱 Soporte multi-dispositivo con almacenamiento en la nube
 
 ⚙️ Tecnologías Utilizadas
-
-    Lenguaje: Kotlin
-
-    Arquitectura: MVVM (Model-View-ViewModel)
-
-    Persistencia local: Room Database
-
-    Autenticación: Firebase Authentication
-
-    Notificaciones: AlarmManager + BroadcastReceiver
-
-    Navegación: Jetpack Navigation Component
-
-    UI: XML + Material Design Components
-
-    Control de versiones: Git + GitHub
-
+Categoría	Tecnologías
+Lenguaje	Kotlin
+Arquitectura	MVVM (Model-View-ViewModel)
+Persistencia	Room Database
+Autenticación	Firebase Authentication
+Notificaciones	AlarmManager + BroadcastReceiver
+Navegación	Jetpack Navigation Component
+UI	XML + Material Design Components
+Control Versión	Git + GitHub
 📸 Capturas de Pantalla
-Inicio de Sesión	Lista de Citas	Calendario
-Login	Citas	Calendario
-Crear Cita	Notificación	Perfil
-Crear Cita	Notificación	Perfil
+<div align="center"> <table> <tr> <td align="center"><b>Inicio de Sesión</b></td> <td align="center"><b>Lista de Citas</b></td> <td align="center"><b>Calendario</b></td> </tr> <tr> <td><img src="media/login_screen.png" width="200"></td> <td><img src="media/citas_screen.png" width="200"></td> <td><img src="media/calendar_screen.png" width="200"></td> </tr> <tr> <td align="center"><b>Crear Cita</b></td> <td align="center"><b>Notificación</b></td> <td align="center"><b>Perfil</b></td> </tr> <tr> <td><img src="media/add_appointment.png" width="200"></td> <td><img src="media/notification.png" width="200"></td> <td><img src="media/profile.png" width="200"></td> </tr> </table> </div>
 🚀 Instalación y Configuración
 Requisitos Previos
 
@@ -59,6 +43,7 @@ Pasos para Ejecutar el Proyecto
 
     Clonar el repositorio:
 
+bash
 
 git clone https://github.com/juancastro23/juanrepo.git
 cd GodStyle
@@ -107,8 +92,7 @@ bash
 
 📚 Documentación Técnica
 Diagrama de Arquitectura
-
-Arquitectura
+<p align="center"> <img src="media/image2.png" alt="Arquitectura" width="600"> </p>
 Estructura de la Base de Datos
 kotlin
 
@@ -144,38 +128,37 @@ json
 
 🌟 Próximas Características
 
-    Sincronización bidireccional con Cloud Firestore
+    🔄 Sincronización bidireccional con Cloud Firestore
 
-    Autenticación con Google y Facebook
+    🌐 Autenticación con Google y Facebook
 
-    Dashboard analítico con estadísticas
+    📊 Dashboard analítico con estadísticas
 
-    Soporte multi-idioma (internacionalización)
+    🌍 Soporte multi-idioma (internacionalización)
 
-    Sistema de recordatorios SMS
+    💬 Sistema de recordatorios SMS
 
 🤝 Contribución
 
-¡Las contribuciones son bienvenidas! Por favor siga estos pasos:
+¡Las contribuciones son bienvenidas! Sigue estos pasos:
 
-    Hacer un fork del proyecto
+    Haz un fork del proyecto
 
-    Crear una rama para su feature (git checkout -b feature/AmazingFeature)
+    Crea una rama para tu feature (git checkout -b feature/AmazingFeature)
 
-    Hacer commit de sus cambios (git commit -m 'Add some AmazingFeature')
+    Haz commit de tus cambios (git commit -m 'Add some AmazingFeature')
 
-    Hacer push a la rama (git push origin feature/AmazingFeature)
+    Haz push a la rama (git push origin feature/AmazingFeature)
 
-    Abrir un Pull Request
+    Abre un Pull Request
 
 📄 Licencia
 
-Este proyecto está bajo la licencia MIT. Consulte el archivo LICENSE para más detalles.
+Este proyecto está bajo la licencia MIT. Consulta el archivo LICENSE para más detalles.
 ✉️ Contacto
 
 Juan Castro Rodríguez
-Email: tu-email@ejemplo.com
-LinkedIn: Juan Castro
-GitHub: juancastro23
-
-GodStyle - Transformando la gestión de citas para profesionales de la estética © 2025
+Email
+LinkedIn
+GitHub
+<p align="center"> ✨ <strong>GodStyle</strong> - Transformando la gestión de citas para profesionales de la estética © 2025 ✨ </p>
